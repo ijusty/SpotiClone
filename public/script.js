@@ -30,13 +30,13 @@ const playlists = {
     ]
 };
 
-let currentPlaylist = "favourite"; // Объявление переменной currentPlaylist
+let currentPlaylist = "favourite"; 
 
 function displaySongs(playlist) {
     const songList = document.getElementById('songList');
-    songList.innerHTML = ''; // Очищаем список перед добавлением новых песен
+    songList.innerHTML = ''; 
 
-    const songsToDisplay = playlists[playlist]; // Получаем песни из выбранного плейлиста
+    const songsToDisplay = playlists[playlist]; 
 
     songsToDisplay.forEach((song, index) => {
         const songItem = document.createElement('div');
@@ -49,7 +49,7 @@ function displaySongs(playlist) {
         songList.appendChild(songItem);
     });
 
-    // Обновляем ссылку на элементы песен
+    
     songItems = Array.from(document.getElementsByClassName('songItem'));
     addSongItemEventListeners();
     updateCurrentTrackColor();
@@ -57,7 +57,7 @@ function displaySongs(playlist) {
 
 function displayAuthorSongs(author) {
     const authorSongsList = document.getElementById('authorSongsList');
-    authorSongsList.innerHTML = ''; // Очищаем список перед добавлением новых песен
+    authorSongsList.innerHTML = ''; 
 
     const songsByAuthor = playlists.favourite.filter(song => song.songAuthor === author);
 
@@ -76,47 +76,47 @@ function displayAuthorSongs(author) {
 
 
 function addSongItemEventListeners() {
-    // Удаляем все предыдущие обработчики событий
+    
     songItems.forEach((songItem) => {
         const playButton = songItem.querySelector('.songItemPlay');
-        playButton.removeEventListener('click', playSong); // Удаляем старый обработчик
+        playButton.removeEventListener('click', playSong); 
     });
 
-    // Добавляем новые обработчики событий
+    
     songItems.forEach((songItem) => {
         const playButton = songItem.querySelector('.songItemPlay');
         playButton.addEventListener('click', playSong);
     });
 }
 
-updateCurrentTrackColor(); // Обновляем цвет текущего трека
-resetPlaylistColor(); // Сбрасываем цвет плейлиста
+updateCurrentTrackColor(); 
+resetPlaylistColor(); 
 
 function playSong(e) {
-    // Сбрасываем все воспроизведения
+    
     makeAllPlays();
 
-    // Получаем индекс текущей песни
+    
     songIndex = parseInt(e.target.id);
 
-    // Устанавливаем источник аудио
+    
     audioElement.src = playlists[currentPlaylist][songIndex].filePath;
     document.getElementById('gif').src = playlists[currentPlaylist][songIndex].coverPath;
 
-    // Обновляем название песни и другие элементы интерфейса
+    
     updateSongName(songIndex);
-    audioElement.currentTime = 0; // Начинаем с начала
-    audioElement.play(); // Воспроизводим трек
+    audioElement.currentTime = 0; 
+    audioElement.play(); 
 
-    // Обновляем иконки воспроизведения
+    
     masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
 
-    // Обновляем цвет текущего трека
+    
     updateCurrentTrackColor();
-    updatePlaylistColors(); // Обновляем цвета плейлистов
+    updatePlaylistColors(); 
     resetPlaylistColor();
-    isPlaying = true; // Устанавливаем флаг воспроизведения
+    isPlaying = true; 
 }
 
 
@@ -142,30 +142,30 @@ function addSongItemEventListeners() {
     songItems.forEach((songItem) => {
         const playButton = songItem.querySelector('.songItemPlay');
         playButton.addEventListener('click', (e) => {
-            // Сбрасываем все воспроизведения
+            
             makeAllPlays();
 
-            // Получаем индекс текущей песни
+            
             songIndex = parseInt(e.target.id);
 
-            // Устанавливаем источник аудио
+            
             audioElement.src = playlists[currentPlaylist][songIndex].filePath;
             document.getElementById('gif').src = playlists[currentPlaylist][songIndex].coverPath;
 
-            // Обновляем название песни и другие элементы интерфейса
+            
             updateSongName(songIndex);
-            audioElement.currentTime = 0; // Начинаем с начала
-            audioElement.play(); // Воспроизводим трек
+            audioElement.currentTime = 0; 
+            audioElement.play(); 
 
-            // Обновляем иконки воспроизведения
+            
             masterPlay.classList.remove('fa-play-circle');
             masterPlay.classList.add('fa-pause-circle');
 
-            // Обновляем цвет текущего трека
+            
             updateCurrentTrackColor();
-            updatePlaylistColors(); // Обновляем цвета плейлистов
+            updatePlaylistColors(); 
             resetPlaylistColor();
-            isPlaying = true; // Устанавливаем флаг воспроизведения
+            isPlaying = true; 
         });
     });
 }
@@ -176,13 +176,13 @@ function savePlaybackState() {
     localStorage.setItem('currentSongIndex', songIndex);
     localStorage.setItem('currentTime', audioElement.currentTime);
     localStorage.setItem('isPlaying', audioElement.paused ? 'false' : 'true');
-    localStorage.setItem('currentPlaylist', currentPlaylist); // Сохраняем текущий плейлист
+    localStorage.setItem('currentPlaylist', currentPlaylist); 
 }
 
 function loadPlaybackState() {
-    const savedPlaylist = localStorage.getItem('currentPlaylist'); // Загружаем текущий плейлист
+    const savedPlaylist = localStorage.getItem('currentPlaylist'); 
     if (savedPlaylist) {
-        currentPlaylist = savedPlaylist; // Устанавливаем загруженный плейлист
+        currentPlaylist = savedPlaylist; 
     }
 
     const savedSongIndex = localStorage.getItem('currentSongIndex');
@@ -203,11 +203,11 @@ function loadPlaybackState() {
             audioElement.play();
             masterPlay.classList.remove('fa-play-circle');
             masterPlay.classList.add('fa-pause-circle');
-            isPlaying = true; // Устанавливаем флаг воспроизведения
+            isPlaying = true; 
         } else {
             masterPlay.classList.remove('fa-pause-circle');
             masterPlay.classList.add('fa-play-circle');
-            isPlaying = false; // Устанавливаем флаг остановки
+            isPlaying = false; 
         }
     }
 }
@@ -229,7 +229,7 @@ function playCurrentTrack() {
     updateSongName(songIndex);
     audioElement.currentTime = 0;
     audioElement.play();
-    updateCurrentTrackColor(); // Обновляем цвет текущего трека
+    updateCurrentTrackColor(); 
     updatePlaylistColor(currentPlaylist);
     resetPlaylistColor();
     checkSongIndex();
@@ -244,7 +244,7 @@ function updateSongName(songIndex) {
 }
 
 function updateCurrentTrackColor() {
-    if (songItems[songIndex]) { // Проверяем, существует ли элемент
+    if (songItems[songIndex]) { 
         songItems[songIndex].getElementsByClassName("songName")[0].style.color = "#00d900"; 
     }
 }
@@ -294,13 +294,13 @@ defaultPlaylistButton.classList.add('active');
 savedPlaylistButton.classList.remove('active'); 
 
 function resetPlayback() {
-    makeAllPlays(); // Останавливаем все воспроизводимые треки
-    audioElement.pause(); // Останавливаем текущее воспроизведение
+    makeAllPlays(); 
+    audioElement.pause(); 
     masterPlay.classList.remove('fa-pause-circle');
     masterPlay.classList.add('fa-play-circle');
-    songIndex = 0; // Сбрасываем индекс песни на 0
-    updateSongName(songIndex); // Обновляем название текущего трека
-    document.getElementById('gif').src = playlists[currentPlaylist][songIndex].coverPath; // Обновляем обложку
+    songIndex = 0; 
+    updateSongName(songIndex); 
+    document.getElementById('gif').src = playlists[currentPlaylist][songIndex].coverPath; 
 }
 jake = document.getElementById("AuthorInfo");
 jake.hidden = true;
@@ -391,30 +391,30 @@ function changeAuthorInfo() {
 
 
 savedPlaylistButton.addEventListener('click', () => {
-    currentPlaylist = 'saved'; // Обновляем текущий плейлист
-    displaySongs('saved'); // Отображаем песни из нового плейлиста
+    currentPlaylist = 'saved'; 
+    displaySongs('saved'); 
     if (isPlaying) {
-        audioElement.play(); // Продолжаем воспроизведение, если оно было активным
+        audioElement.play(); 
     }
-    updatePlaylistColors(); // Обновляем цвета плейлистов
+    updatePlaylistColors(); 
 });
 
 defaultPlaylistButton.addEventListener('click', () => {
-    currentPlaylist = 'favourite'; // Обновляем текущий плейлист
-    displaySongs('favourite'); // Отображаем песни из нового плейлиста
+    currentPlaylist = 'favourite'; 
+    displaySongs('favourite'); 
     if (isPlaying) {
-        audioElement.play(); // Продолжаем воспроизведение, если оно было активным
+        audioElement.play(); 
     }
-    updatePlaylistColors(); // Обновляем цвета плейлистов
+    updatePlaylistColors(); 
 });
 
 
 function checkSongIndex() {
-    resetPlaylistColor(); // Сброс цвета плейлиста перед воспроизведением
-    if (songIndex >= songItems.length) { // Проверяем, если индекс больше или равен количеству песен
-        playTrack("saved"); // Воспроизводим "saved" трек
+    resetPlaylistColor(); 
+    if (songIndex >= songItems.length) { 
+        playTrack("saved"); 
     } else {
-        playTrack("favourite"); // Воспроизводим "favourite" трек
+        playTrack("favourite"); 
     }
 }
 
@@ -425,14 +425,14 @@ masterPlay.addEventListener('click', () => {
         masterPlay.classList.remove('fa-play-circle');
         masterPlay.classList.add('fa-pause-circle');
         updateCurrentTrackColor();
-        isPlaying = true; // Устанавливаем флаг воспроизведения
+        isPlaying = true; 
     } else {
         audioElement.pause();
         masterPlay.classList.remove('fa-pause-circle');
         masterPlay.classList.add('fa-play-circle');
         makeAllPlays();
         resetPlaylistColor();
-        isPlaying = false; // Сбрасываем флаг воспроизведения
+        isPlaying = false; 
     }
 });
 
@@ -486,52 +486,49 @@ songItemPlayButtons.forEach((element) => {
 });
 
 document.getElementById('next').addEventListener('click', () => {
-    makeAllPlays(); // Останавливаем все воспроизводимые треки
+    makeAllPlays(); 
     loadSongText(playlists[currentPlaylist][songIndex].songlyricsPath);
-    // Увеличиваем индекс на 1
+    
     songIndex++;
 
-    // Проверяем, не вышел ли индекс за пределы текущего плейлиста
+    
     if (songIndex >= playlists[currentPlaylist].length) {
-        songIndex = 0; // Если вышел, сбрасываем на 0
+        songIndex = 0; 
     }
 
-    // Устанавливаем источник аудио и обновляем интерфейс
-    audioElement.src = playlists[currentPlaylist][songIndex].filePath; // Устанавливаем источник
-    document.getElementById('gif').src = playlists[currentPlaylist][songIndex].coverPath; // Обновляем обложку
-    audioElement.currentTime = 0; // Начинаем с начала
-    audioElement.play(); // Воспроизводим трек
-    masterPlay.classList.remove('fa-play-circle'); // Обновляем иконку воспроизведения
+    
+    audioElement.src = playlists[currentPlaylist][songIndex].filePath; 
+    document.getElementById('gif').src = playlists[currentPlaylist][songIndex].coverPath; 
+    audioElement.currentTime = 0; 
+    audioElement.play(); 
+    masterPlay.classList.remove('fa-play-circle'); 
     masterPlay.classList.add('fa-pause-circle');
     loadSongText(playlists[currentPlaylist][songIndex].songlyricsPath);
     changeAuthorInfo();
-    updateSongName(songIndex); // Обновляем название текущего трека
-    updateCurrentTrackColor(); // Обновляем цвет текущего трека
-    updatePlaylistColor(currentPlaylist); // Обновляем цвет для текущего плейлиста
-    resetPlaylistColor(); // Сбрасываем цвет плейлиста
-    checkSongIndex(); // Проверяем индекс песни
+    updateSongName(songIndex); 
+    updateCurrentTrackColor(); 
+    updatePlaylistColor(currentPlaylist); 
+    resetPlaylistColor(); 
+    checkSongIndex(); 
 });
 
 
 document.getElementById('previous').addEventListener('click', () => {
-    makeAllPlays(); // Останавливаем все воспроизводимые треки
 
-    // Уменьшаем индекс на 1 и обрабатываем переход в начало плейлиста
     songIndex = (songIndex - 1 + playlists[currentPlaylist].length) % playlists[currentPlaylist].length;
     loadSongText(playlists[currentPlaylist][songIndex].songlyricsPath);
-    // Устанавливаем источник аудио и обновляем интерфейс
-    audioElement.src = playlists[currentPlaylist][songIndex].filePath; // Устанавливаем источник
-    document.getElementById('gif').src = playlists[currentPlaylist][songIndex].coverPath; // Обновляем обложку
-    audioElement.currentTime = 0; // Начинаем с начала
-    audioElement.play(); // Воспроизводим трек
-    masterPlay.classList.remove('fa-play-circle'); // Обновляем иконку воспроизведения
+    audioElement.src = playlists[currentPlaylist][songIndex].filePath; 
+    document.getElementById('gif').src = playlists[currentPlaylist][songIndex].coverPath; 
+    audioElement.currentTime = 0; 
+    audioElement.play(); 
+    masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
     changeAuthorInfo();
-    updateSongName(songIndex); // Обновляем название текущего трека
-    updateCurrentTrackColor(); // Обновляем цвет текущего трека
-    updatePlaylistColor(currentPlaylist); // Обновляем цвет для текущего плейлиста
-    resetPlaylistColor(); // Сбрасываем цвет плейлиста
-    checkSongIndex(); // Проверяем индекс песни
+    updateSongName(songIndex); 
+    updateCurrentTrackColor(); 
+    updatePlaylistColor(currentPlaylist); 
+    resetPlaylistColor(); 
+    checkSongIndex(); 
 });
 
 
