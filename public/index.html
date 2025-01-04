@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клон Spotify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="headernav">
+        <nav>
+            <ul>
+                <li class="brand"><img src="logo.png" alt="Spotify"> Spoticlone</li>
+            </ul>
+        </nav>
+    </div>
+    <div class="advContainer">
+        <div class="playlistContainer">
+            <h1>Медиатека</h1>
+            <div role="presentation" style="transform: translateY(0px);" class="plCont"></div>
+            <div class="playlist1">
+                <div class="rectangle-5" id="defaultPlaylistButton"></div>
+                <img class="playlist1img" src="liked-songs-300.png" />
+                <div id="div">Плейлист</div>
+                <div id="div2">Любимые треки</div>
+            </div>
+            <div class="playlist2">
+                <div class="rectangle-6" id="savedPlaylistButton"></div>
+                <img class="playlist1img" src="playlist.png" />
+                <div class="div3" id="div3">Плейлист</div>
+                <div class="div4" id="div4">Сохраненные</div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="playlistss">
+                <div class="playlistName">
+                    <div class="playlistBox contentSpacing">
+                        <div>
+                        </div>
+                        <div class="_gLjHpwOxHFwo5nLM8hb _osiFNXU9Cy1X0CYaU9Z">
+                            <div class="Ws8Ec3GREpT5PAUesr9b" data-testid="playlist-image" draggable="true">
+                                <div class="CmkY1Ag0tJDfnFXbGgju" draggable="false">
+                                    <img aria-hidden="false" draggable="false" loading="eager" id="playlistImage" src="liked-songs-300.png" alt="Любимые треки" class="mMx2LUixlnN_Fu45JpFB CmkY1Ag0tJDfnFXbGgju _EShSNaBK1wUIaZQFJJQ Yn2Ei5QZn19gria6LjZj" srcset="liked-songs-300.png 150w, liked-songs-300.png 300w" sizes="(min-width: 1280px) 232px, 192px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="RP2rRchy4i8TIp1CTmb7">
+                            <span class="encore-text encore-text-body-small lp9Tfm4rsM9_pfbIE0zd" data-encore-id="text">Плейлист</span>
+                            <span dir="auto" class="rEN7ncpaUeSGL9z0NGQR" draggable="true" data-testid="entityTitle">
+                                <h1 class="encore-text encore-text-headline-large encore-internal-color-text-base" data-encore-id="text" dir="auto" style="visibility: visible; width: 100%; font-size: 6rem; white-space: nowrap;" id="playlistNameTitle">Любимые треки</h1>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="songList" id="songList">
+
+                <div id="savedSongItemContainer" hidden>
+
+                </div>
+            </div>
+            <div class="songBanner"></div>
+        </div>
+        <div class="AuthorInfo" id="AuthorInfo" style="overflow-y: auto;">
+            <div class="grad">
+                <h1 id="AuthorTitle">Автор песни</h1>
+                <div role="presentation" style="transform: translateY(0px);" class="plCont"></div>
+                <p id="AuthorDesc">Информация об авторе отсутствует.</p>
+                <div><a href="#" onclick="return false;" id="AuthorDescButtonn">Скрыть информацию</a></div>
+                <br>
+                <div><a href="#" onclick="return false;" id="songLyrcisButton">Показать текст песни</a></div>
+                <br>
+                <div id="songLyricss"> </div>
+                <br>
+                <h4>Треки автора на нашем сайте:</h4>
+                <div id="authorSongsList">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom">
+            <div class="bottom2">
+                <div class="playingInfo">
+                    <div class="songInfo">
+                        <img src="liked-songs-300.png" height="50px" id="gif">
+                        <div class="songInfo2">
+                            <div id="masterSongName">Название песни</div>
+                            <div><a href="#" onclick="return false;" id="masterSongNameAuthor">Автор песни</a></div>
+                        </div>
+                    </div>
+                    <div class="parentIcons">
+                        <div class="icons">
+                            <i class="fas fa-3x fa-step-backward" id="previous"></i>
+                            <i class="far fa-3x fa-play-circle" id="masterPlay"></i>
+                            <i class="fas fa-3x fa-step-forward" id="next"></i>
+                            <button id="loopButton" style="background-color: white; color: black; padding: 10px; border: none; border-radius: 5px;">
+                                Loop
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="volume-control">
+                        <label for="volume">Громкость:</label>
+                        <input type="range" id="volume" min="0" max="1" step="0.01" value="0.025">
+                    </div>
+                    <div class="progressBarc"><input type="range" name="range" id="myProgressBar" min="0" value="0" max="100"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="advContainer2">
+        
+        <div class="container2">
+            <span class="encore-text encore-text-body-small lp9Tfm4rsM9_pfbIE0zd" data-encore-id="text">Информация</span>
+            <span dir="auto" class="rEN7ncpaUeSGL9z0NGQR" draggable="true" data-testid="entityTitle">
+                <h2 class="encore-text encore-text-headline-large encore-internal-color-text-base" data-encore-id="text" dir="auto" style="visibility: visible; width: 100%; font-size: 2rem; white-space: nowrap;" id="playlistNameTitle">Сайт разработан студентом группы 24ВВВ3 <a href="https://vk.com/waterwalk3r" style="text-decoration: underline;">Кукушкиным Антоном</a></h2>
+            </span>
+        </div>
+        
+        
+    </div>
+    <script src="script.js">
+
+    </script>
+    <script src="https://kit.fontawesome.com/69c76e9de6.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

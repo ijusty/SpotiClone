@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить Музыку</title>
+</head>
+<body>
+    <h1>Добавить Музыку</h1>
+    <form id="musicForm">
+        <label for="songName">Название песни:</label>
+        <input type="text" id="songName" required><br>
+
+        <label for="filePath">Путь к файлу:</label>
+        <input type="text" id="filePath" required><br>
+
+        <label for="coverPath">Путь к обложке:</label>
+        <input type="text" id="coverPath" required><br>
+
+        <button type="submit">Добавить</button>
+    </form>
+
+    <script>
+        document.getElementById('musicForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const songName = document.getElementById('songName').value;
+            const filePath = document.getElementById('filePath').value;
+            const coverPath = document.getElementById('coverPath').value;
+
+            const newSong = { songName, filePath, coverPath };
+
+            // Отправка данных на сервер (например, с использованием fetch)
+            fetch('/add_song', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newSong)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Успех:', data);
+                alert('Песня добавлена!');
+                document.getElementById('musicForm').reset(); // Сброс формы
+            })
+            .catch((error) => {
+                console.error('Ошибка:', error);
+            });
+        });
+    </script>
+</body>
+</html>

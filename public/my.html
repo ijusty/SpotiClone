@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клон Spotify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="brand"><img src="logo.png" alt="Spotify"> Spoticlone</li>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="my.html">О сайте</a></li>
+        </ul>
+    </nav>
+    <div class="advContainer">
+        
+        <div class="container">
+            <div class="songList">
+                <div class="playlistss">
+                    <div class="playlistName">
+                        <div class="playlistBox contentSpacing">
+                            <div>
+                            </div>
+                            <div class="_gLjHpwOxHFwo5nLM8hb _osiFNXU9Cy1X0CYaU9Z">
+                                <div class="Ws8Ec3GREpT5PAUesr9b" data-testid="playlist-image" draggable="true">
+                                    <div class="CmkY1Ag0tJDfnFXbGgju" draggable="false">
+                                        <img src="https://misc.scdn.co/liked-songs/liked-songs-300.png" alt="Любимые треки" style="height: 230px; border-radius: 6px; margin-top: -50px; margin-left: -25px;" srcset="https://misc.scdn.co/liked-songs/liked-songs-300.png 75w, https://misc.scdn.co/liked-songs/liked-songs-300.png 75w" sizes="(min-width: 1280px) 232px, 192px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="RP2rRchy4i8TIp1CTmb7" style="margin-top: 12%;">
+                                <span  class="encore-text encore-text-body-small lp9Tfm4rsM9_pfbIE0zd" data-encore-id="text" > </span>
+                                <span dir="auto" class="rEN7ncpaUeSGL9z0NGQR" draggable="true" data-testid="entityTitle" >
+                                    <h1 class="encore-text encore-text-headline-large encore-internal-color-text-base" data-encore-id="text" dir="auto" style="visibility: visible; width: 100%; font-size: 6rem; white-space: nowrap;">О данной странице</h1>
+                                </span>
+                                <span dir="auto" class="rEN7ncpaUeSGL9z0NGQR" draggable="true" data-testid="entityTitle">
+                                    <h1 class="encore-text encore-text-headline-large encore-internal-color-text-base" data-encore-id="text" dir="auto" style="visibility: visible; width: 100%; font-size: 2rem; white-space: nowrap;">Данный мини-клон стримингового сервиса Spotify<br>создан студентом группы 24ВВВ3<br>Кукушкиным Антоном Аликсеевичем</h1>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="songBanner"></div>
+        </div>
+        <div class="bottom">
+            <div class="playingInfo">
+                <div class="songInfo">
+                    <img src="https://misc.scdn.co/liked-songs/liked-songs-300.png" height="50px" id="gif"> 
+                    <div id="masterSongName">Название песни</div>
+                </div>
+                <div class="parentIcons">
+                    <div class="icons">
+                        <i class="fas fa-3x fa-step-backward" id="previous"></i>
+                        <i class="far fa-3x fa-play-circle" id="masterPlay"></i>
+                        <i class="fas fa-3x fa-step-forward" id="next"></i> 
+                        <button id="loopButton" style="background-color: white; color: black; padding: 10px; border: none; border-radius: 5px;">
+                            Loop
+                        </button>
+                    </div>
+                </div>
+                <div class="volume-control">
+                    <label for="volume">Громкость:</label>
+                    <input type="range" id="volume" min="0" max="1" step="0.01" value="0.025">
+                </div>
+                <div class="progressBarc"><input type="range" name="range" id="myProgressBar" min="0" value="0" max="100"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/69c76e9de6.js" crossorigin="anonymous"></script>
+    
+</body>
+</html>
